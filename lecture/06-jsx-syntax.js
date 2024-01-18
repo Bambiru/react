@@ -6,7 +6,7 @@ import { createRoot } from "https://esm.sh/react-dom";
 // 브라우저가 해석할 수 있도록 변환시켜줘야 한다.
 // (ex: Sass -> CSS Compile, TypeScript -> JavaScript )
 
-createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <div id="app">
     <h1>
       안녕!

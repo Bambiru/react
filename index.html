@@ -13,11 +13,10 @@
       src="https://unpkg.com/@babel/standalone/babel.min.js"
       crossorigin
     ></script>
-    <!-- <script type="text/babel">
-      const getRandem = (n) => Math.floor(Math.random() * n) + 1;
-    </script> -->
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
     <script type="text/babel">
-      const element = (
+      ReactDOM.createRoot(document.getElementById("root")).render(
         <div id="app">
           <h1>
             안녕!
@@ -31,6 +30,7 @@
         </div>
       );
     </script>
+
     <script type="module" src="lecture/06-jsx-syntax.js"></script>
   </head>
   <body>
