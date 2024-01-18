@@ -4,42 +4,18 @@
     <meta content="charset=UTF-8" />
     <title>리액트 펀더멘탈</title>
     <link rel="icon" href="assets/favicon.svg" />
-    <script type="module">
-      // React 모듈 불러오기
-      import React from "https://esm.sh/react";
-      // ReactDOM 모듈 불러오기
-      import ReactDOM from "https://esm.sh/react-dom";
-      console.log(`ReactDOM.version = ${ReactDOM.version}`);
-
-      // 리액트 요소 생성
-      // <h1></h1>
-      // <p></p>
-      const h1Element = React.createElement(
-        // type, // 요소 이름(문자)
-        "h1",
-        // props, // 속성 집합(객체)
-        {},
-        // ...children // append(child1, child2, ... childN)
-        "리액트"
-      );
-
-      const pElement = React.createElement(
-        "p",
-        {},
-        "리액트는 UI 구축을 위한 자바스크립트 라이브러리입니다."
-      );
-      // 리액트가 하는 일은 리액트 앨리먼트를 생성하는 것이다.
-      // 리액트 엘리먼트를 화면(DOM)에 렌더링하려면 "리액트 DOM"이 필요하다.
-
-      // React API
-      // ReactDOM.createRoot(domNode) // 실제 DOM에 위치한 #root 요소
-      const reactDomRoot = ReactDOM.createRoot(document.getElementById("root"));
-      console.log(reactDomRoot); // 리액트의 DOM 루트라고 하는 객체가 생성된다.
-    </script>
+    <link
+      href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/variable/woff2/SUIT-Variable.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <script type="module" src="lecture/05-like-a-react.js"></script>
   </head>
   <body>
     <noscript>이 앱을 사용하려면 자바스크립트 활성화가 필요합니다.</noscript>
 
     <div id="root"></div>
+
+    <button type="button" class="getOutReact__button">리액트 나가 !</button>
   </body>
 </html>
