@@ -35,13 +35,13 @@ const createApp = (data) => {
       </h1>
       <p>{data.message}</p>
 
-      <form>
+      <FORM>
         {/* JSX:for=>htmlFor, class=>className */}
         <label htmlFor="searchKeyword" className="sr-only">
           검색
         </label>
         <input id="searchKeyword" type="search" placeholder="검색" />
-      </form>
+      </FORM>
     </div>
   );
 };
