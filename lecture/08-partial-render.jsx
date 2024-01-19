@@ -1,6 +1,14 @@
 import React from "https://esm.sh/react";
 import { createRoot } from "https://esm.sh/react-dom";
 
+const rootElement = document.getElementById("root");
+const partialElement = document.createElement("div");
+partialElement.setAttribute("id", "partialRoot");
+document.body.append(partialElement);
+
+const reactDomRoot = createRoot(rootElement);
+const partialRoot = createRoot(partialElement);
+
 const app = (
   <div id="app">
     <h1>
@@ -14,7 +22,5 @@ const app = (
     </p>
   </div>
 );
-const rootElement = document.getElementById("root");
-const reactDomRoot = createRoot(rootElement);
-
 reactDomRoot.render(app);
+partialRoot.render(app);
