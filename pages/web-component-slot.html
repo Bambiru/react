@@ -9,12 +9,15 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/variable/woff2/SUIT-Variable.css"
     />
-    <link rel="stylesheet" href="./src/styles/main.css" />
-    <script type="module" src="./src/exercises/01-searchbar.jsx"></script>
+    <link rel="stylesheet" href="../src/styles/main.css" />
+    <script src="../src/lecture/12-web-component.js"></script>
   </head>
   <body>
     <noscript>이 앱을 사용하려면 자바스크립트 활성화가 필요합니다.</noscript>
 
-    <div id="root"></div>
+    <euid-stack>
+      <span slot="headline">슬롯(Slot)</span>
+      <span slot="description">슬롯! 나를 넣어줘</span>
+    </euid-stack>
   </body>
 </html>

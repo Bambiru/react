@@ -1,0 +1,6 @@
+.searchBar {
+  display: flex;
+  border: 1px solid var(--green-100, #03cc5c);
+  padding: 12px 12px 12px 20px;
+  gap: 16px;
+}

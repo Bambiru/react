@@ -9,8 +9,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/variable/woff2/SUIT-Variable.css"
     />
-    <link rel="stylesheet" href="./src/styles/main.css" />
-    <!-- 전역에서 접근할 수 있도록 CDN코드를 불러옴 -->
+    <link rel="stylesheet" href="../src/styles/main.css" />
     <script
       src="https://unpkg.com/react/umd/react.development.js"
       crossorigin
@@ -25,18 +24,9 @@
     ></script>
     <script type="module">
       import { loadModule } from "https://klesun.github.io/ts-browser/src/ts-browser.js";
-      /* module을 불러오기위해 필요한 loadModule , 이 안의 파일을 읽어올 수 잇으며, 확장자가 tsx이라는 것  */
-      loadModule(
-        // loadModule(file, options)  // options는 {}객체이다.
-
-        "./src/lecture/09-typescript-runtime.tsx",
-        {
-          // 서비스를 사용하면 ts모드를 사용할 수 있는데, JsxEmit(방출시키다)는 것에 접근
-          // jsx를 React로 컴파일 시켜라 라는 의미이다.
-          // 온라인상에서 쓸 수 있도록 설정해준다.
-          jsx: ts.JsxEmit.React,
-        }
-      );
+      loadModule("../src/lecture/09-typescript-browser.tsx", {
+        jsx: ts.JsxEmit.React,
+      });
     </script>
   </head>
   <body>
