@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+// @ts-ignore
+const { createRoot } = ReactDOM;
 
 const createApp = () => {
     return (
@@ -12,5 +12,5 @@ const createApp = () => {
 
 const rootElement = document.getElementById('root') as HTMLElement;
 
-const root = ReactDOM.createRoot(rootElement);
+const root = createRoot(rootElement);
 root.render(createApp());

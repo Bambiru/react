@@ -1,2 +1,5 @@
+.vscode
 .DS_Store
+.exercises
 node_modules
+template.md

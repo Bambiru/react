@@ -4,19 +4,19 @@
   --gray--100: #bcc3c7;
   --gray--500: #6d7478;
   --gray--950: #040404;
-  --green-100: #cdf5de;
-  --green-200: #9aebbe;
-  --green-300: #68e09d;
-  --green-400: #35d67d;
-  --green-500: #03cc5c;
-  --green-600: #02a34a;
-  --green-700: #027a37;
-  --green-800: #015225;
-  --green-900: #012912;
+  --green--100: #cdf5de;
+  --green--200: #9aebbe;
+  --green--300: #68e09d;
+  --green--400: #35d67d;
+  --green--500: #03cc5c;
+  --green--600: #02a34a;
+  --green--700: #027a37;
+  --green--800: #015225;
+  --green--900: #012912;
   --blue--100: #01a9ff;
   --blue--200: #4284f7;
 
-  /* Effect styles */
+  /* effect styles */
   --shadow--100: 0px 4px 4px rgba(68, 131, 63, 0.15);
 }
 
@@ -24,21 +24,20 @@
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  border: 1px solid var(--green-500, #03cc5c);
+  border: 1px solid var(--green-500, #03CC5C);
   padding: 12px 12px 12px 20px;
-  background: var(--white, #fff);
+  background: var(--white, #FFF);
   border-radius: 50px;
-
-  /* :focus-within => 내부안에 초점이 있는 요소가 있다면 스타일링 해달라 */
+  
   &:focus-within {
     box-shadow: var(--shadow--100);
   }
-
+  
   /* container */
   [role="group"] {
+    flex: 1;
     display: flex;
     gap: 12px;
-    flex: 1;
   }
 
   input[type="search"] {
@@ -55,17 +54,17 @@
     &:focus {
       outline: none;
     }
+
     /* &:focus-visible { */
-    /* outline: 2px solid var(--green--500); */
-    /* border-radius: 4px; */
+      /* outline: 2px solid var(--green--500); */
+      /* border-radius: 4px; */
     /* } */
+
     &::placeholder {
-      color: var(--gray-100, #bcc3c7);
+      color: var(--gray-100, #BCC3C7);      
     }
   }
 
-  /* width: inline-size / height: block-size를 권장합니다. */
-  /* button 초기화 */
   button[type="submit"] {
     --size: 24px;
 
@@ -74,12 +73,17 @@
     block-size: var(--size);
     border: 0;
     padding: 0;
-    background: transparent;
+    background-color: transparent;
+
+    &:focus {
+      outline: none;
+    }
 
     &:focus-visible {
-      outline: 4px solid var(--green-300);
+      outline: 4px solid var(--green--100);
       border-radius: 50%;
     }
+
     &:active {
       scale: 0.9;
     }

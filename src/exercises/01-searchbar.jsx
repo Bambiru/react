@@ -1,17 +1,18 @@
-// no module ( without from )
-import "./01-searchbar.css";
+// no module (without from)
+import './01-searchbar.css';
 
 // module
-import React from "https://esm.sh/react";
-import { createRoot } from "https://esm.sh/react-dom";
+import React from 'https://esm.sh/react';
+import { createRoot } from 'https://esm.sh/react-dom';
 
-//DOM Script === Vanilla Script
+// DOM Script === Vanilla Script
 function bodyStyling() {
   document.body.style.backgroundColor = `#f4f6f8`;
 }
+
 bodyStyling();
 
-/* ---------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
 
 const renderIconCircle = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -83,7 +84,7 @@ const renderFormControl = () => (
 );
 
 const renderSearchBar = () => (
-  <form className="searchBar">
+  <form className="searchBar" onSubmit={(e) => e.preventDefault()}>
     <div className="searchBarGroup" role="group">
       {renderIconNaver()}
       {renderFormControl()}
@@ -92,4 +93,4 @@ const renderSearchBar = () => (
   </form>
 );
 
-createRoot(document.getElementById("root")).render(renderSearchBar());
+createRoot(document.getElementById('root')).render(renderSearchBar());
