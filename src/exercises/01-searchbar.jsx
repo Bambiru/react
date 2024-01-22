@@ -84,7 +84,7 @@ const renderFormControl = () => (
 
 const renderSearchBar = () => (
   <form className="searchBar">
-    <div role="group">
+    <div className="searchBarGroup" role="group">
       {renderIconNaver()}
       {renderFormControl()}
     </div>
