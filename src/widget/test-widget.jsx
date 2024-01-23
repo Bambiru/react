@@ -1,6 +1,6 @@
+import { StrictMode } from 'react';
 import './test-widget.css';
 
-import React from 'https://esm.sh/react';
 import { createRoot } from 'https://esm.sh/react-dom';
 function bodyStyling() {
   document.body.style.backgroundColor = `#f4f6f8`;
@@ -268,9 +268,13 @@ const RenderKosdaqWidget = () => (
 
 const RenderWedget = () => (
   <>
-    {<RenderWeatherWidget />}
-    {<RenderFineDustWidget />}
-    {<RenderKosdaqWidget />}
+    <RenderWeatherWidget />
+    <RenderFineDustWidget />
+    <RenderKosdaqWidget />
   </>
 );
-createRoot(document.getElementById('root')).render(<RenderWedget />);
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <RenderWedget />
+  </StrictMode>
+);

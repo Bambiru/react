@@ -1,5 +1,5 @@
 {
-	"type": "module",
+  "type": "module",
 	"scripts": {
 		"dev": "vite",
 		"compile:ts": "tsc ./src/lecture/10-typescript-compiler.ts --target es6",

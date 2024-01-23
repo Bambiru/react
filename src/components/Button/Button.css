@@ -1,0 +1,20 @@
+.Button {
+  cursor: pointer;
+  user-select: none;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  padding: 4px 12px;
+  background: transparent;
+  color: #1a0756d8;
+  font-weight: 600;
+  font-size: 12px;
+  /* transition: scale 0.4s ease-in; */
+
+  &:active:not(:disabled) {
+    scale: 0.96;
+  }
+  &:disabled {
+    color: #19075678;
+    cursor: not-allowed;
+  }
+}

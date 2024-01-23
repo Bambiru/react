@@ -9,6 +9,6 @@
 일자별 학습 내용을 요약합니다.
 
 1. [React, ReactDOM API 이해하기 & JSX 컴파일](./summary/01.md)
-1. [JSX → 슬롯, HTML과 차이점, 공백 문제](./summary/02.md)
-1. [컴포넌트란? & 컴포넌트 타입](./summary/03.md)
-1. [컴포넌트 속성 & 변형](./summary/04.md)
+2. [JSX → 슬롯, HTML과 차이점, 공백 문제](./summary/02.md)
+3. [컴포넌트란? & 컴포넌트 타입](./summary/03.md)
+4. [컴포넌트 속성 & 변형](./summary/04.md)
