@@ -2,7 +2,6 @@
 import './01-searchbar.css';
 
 // module
-import React from 'https://esm.sh/react';
 import { createRoot } from 'https://esm.sh/react-dom';
 
 // DOM Script === Vanilla Script
@@ -13,7 +12,7 @@ function bodyStyling() {
 bodyStyling();
 
 /* -------------------------------------------------------------------------- */
-
+/* 일단 자바스크립트의 방식입니다. */
 const renderIconCircle = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
     <path
