@@ -1,12 +1,12 @@
-import React from 'react';
+// import React from 'react';
 
-const FormControl = () => {
+const FormControl = () => (
   <div className="fromControl">
     <label>
       사용자 이름 <input type="text" name="username" />
     </label>
-  </div>;
-};
+  </div>
+);
 
 // 리액트 + JSX 코드를 해석하면 다음과 같습니다.
 // const FormControl = () => {
