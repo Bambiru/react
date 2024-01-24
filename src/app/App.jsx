@@ -1,4 +1,4 @@
-import Exercise from '../lecture/24-fragment';
+import Exercise from '../lecture/25-mapping-over-data';
 
 function App() {
   return (
