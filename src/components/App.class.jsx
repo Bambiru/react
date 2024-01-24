@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 // 리액트 클래스 컴포넌트 타입
 // 오늘날 많이 사용되지는 않습니다.

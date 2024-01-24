@@ -5,7 +5,7 @@
   --border-color: #ebebea;
   --gradient-start: #fff;
   --gradient-end: #f4f4f4;
-  --sahdow: #b5b5b526;
+  --shadow: #7f818834;
 
   box-sizing: border-box;
   display: flex;
@@ -25,7 +25,7 @@
       var(--gradient-end) 93.35%
     )
   );
-  box-shadow: 0px 4px 4px 0px var(--shadow);
+  box-shadow: 0px 4px 8px var(--shadow);
   font-family: Pretendard;
 
   &.widget__weather {

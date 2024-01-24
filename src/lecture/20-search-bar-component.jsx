@@ -12,15 +12,19 @@ import SearchBar from '../exercises/01-searchbar/components/SearchBar';
 
 function App() {
   return (
-    <div id="app" style={{ display: 'flex', gap: 20, flexFlow: 'column' }}>
+    <div id="app">
       {/* 인스턴스, 엘리먼트, 객체 */}
-      <SearchBar />
-      <SearchBar />
       <SearchBar />
     </div>
   );
 }
 
+// 이전 버전: React.createElement('div', { totalPrice: 32000, student: '김용범', ... })
+// 새로운 JSX 변환 : jsx('div', { totalPrice: 32000, student: '김용범', ... })
+
+// React.createElement(React.StrictMode)
+
+// src/main.jsx
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />

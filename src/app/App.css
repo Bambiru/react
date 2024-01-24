@@ -1,6 +1,6 @@
 .app {
   display: flex;
   flex-flow: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
 }
