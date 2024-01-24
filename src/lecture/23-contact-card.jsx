@@ -27,16 +27,10 @@ const ContactCard = ({ name, job, email, gender, face, ext = 'jpg' }) => {
 function ContactCardList({ children }) {
   return <ul className="ContactCard">{children}</ul>;
 }
+
 export default function Exercise() {
   return (
     <ContactCardList>
-      <ContactCard
-        gender="man"
-        face={2}
-        name="최신기"
-        job="디자인팀 이사"
-        email="choishi@dev.io"
-      />
       <ContactCard
         gender="woman"
         face={2}
