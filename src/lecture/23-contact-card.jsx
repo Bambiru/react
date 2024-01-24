@@ -1,42 +1,63 @@
 import './23-contact-card.css';
 
-const ContactCardItem = ({ img, name, job, email }) => {
+const IMAGE_URL = `https://raw.githubusercontent.com/yamoo9/assets/master/images/faces`;
+const ContactCard = ({ name, job, email, gender, face, ext = 'jpg' }) => {
   return (
     <li className="ContactCardItem">
-      <img src={img} height="90" width="90" alt={`${name} 사진`} />
+      <img
+        src={`${IMAGE_URL}/${gender}/${`0${face}`}.${ext}`}
+        height={90}
+        width={90}
+        alt=""
+      />
       <strong>{name}</strong>
+
       <dl>
         <dt>직업</dt>
         <dd>{job}</dd>
         <dt>이메일</dt>
         <dd>
-          <a href={email}>{email}</a>
+          <a href={`mailto:${email}`}>{email}</a>
         </dd>
       </dl>
     </li>
   );
 };
+
+function ContactCardList({ children }) {
+  return <ul className="ContactCard">{children}</ul>;
+}
 export default function Exercise() {
   return (
-    <ul className="ContactCard">
-      <ContactCardItem
-        img={`https://raw.githubusercontent.com/yamoo9/assets/master/images/faces/woman/02.jpg`}
+    <ContactCardList>
+      <ContactCard
+        gender="man"
+        face={2}
+        name="최신기"
+        job="디자인팀 이사"
+        email="choishi@dev.io"
+      />
+      <ContactCard
+        gender="woman"
+        face={2}
         name="하연주"
         job="웹 디자이너"
         email="hayounju@dev.io"
       />
-      <ContactCardItem
-        img={`https://raw.githubusercontent.com/yamoo9/assets/master/images/faces/man/03.jpg`}
+      <ContactCard
+        gender="man"
+        face={3}
         name="박선호"
         job="웹 개발자"
         email="parksh@dev.io"
       />
-      <ContactCardItem
-        img={`https://raw.githubusercontent.com/yamoo9/assets/master/images/faces/woman/04.jpg`}
+      <ContactCard
+        gender="woman"
+        face={4}
         name="최하영"
         job="웹 기획자"
         email="choi-ha@dev.io"
       />
-    </ul>
+    </ContactCardList>
   );
 }
