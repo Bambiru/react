@@ -1,5 +1,5 @@
 import './App.css';
-import Exercise from '../lecture/26-render-list-avatar-selection';
+import Exercise from '../lecture/28-conditional-rendering';
 
 function App() {
   return (

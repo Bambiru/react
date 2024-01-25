@@ -32,7 +32,7 @@ function Exercise() {
 
   return (
     /* JSX영역에서는 식만 사용가능 */
-    <ul>
+    <ul style={exerciseStyles}>
       {
         /* 복제된 items에서 배열을 돌겠다. */ items.map(
           ({ id, gender, face, name, isOnline }) => {
@@ -52,3 +52,12 @@ function Exercise() {
 }
 
 export default Exercise;
+
+const exerciseStyles = {
+  display: 'flex',
+  gap: 20,
+  marginBlock: 20,
+  listStyle: 'none',
+  paddingInlineStart: 0,
+  flexFlow: 'row',
+};
