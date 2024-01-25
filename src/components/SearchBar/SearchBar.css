@@ -25,23 +25,23 @@
   justify-content: space-between;
   gap: 16px;
   min-width: 192px;
-  border: 1px solid var(--green-500, #03CC5C);
+  border: 1px solid var(--green-500, #03cc5c);
   padding: 12px 12px 12px 20px;
-  background: var(--white, #FFF);
+  background: var(--white, #fff);
   border-radius: 50px;
-  
+
   &:focus-within {
     box-shadow: var(--shadow--100);
   }
-  
+
   /* container */
-  [role="group"] {
+  [role='group'] {
     flex: 1;
     display: flex;
     gap: 12px;
   }
 
-  input[type="search"] {
+  input[type='search'] {
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -57,16 +57,16 @@
     }
 
     /* &:focus-visible { */
-      /* outline: 2px solid var(--green--500); */
-      /* border-radius: 4px; */
+    /* outline: 2px solid var(--green--500); */
+    /* border-radius: 4px; */
     /* } */
 
     &::placeholder {
-      color: var(--gray-100, #BCC3C7);      
+      color: var(--gray-100, #bcc3c7);
     }
   }
 
-  button[type="submit"] {
+  button[type='submit'] {
     --size: 24px;
 
     cursor: pointer;
