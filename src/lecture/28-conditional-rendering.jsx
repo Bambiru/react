@@ -1,4 +1,46 @@
-export default function Exercise(/* nullish { isExist } */) {
+/* 표시 & 감춤 */
+export default function Exercise2({ isShowLink = false }) {
+  // 조건부 표시 (display : show or hide)
+  // 강사는 왜 조건부 표시를 다루는가 ?
+  // 리액트 공식 문서는 조건부 렌더링만 다룹니다.
+  // 하지만 vue에서는 다룹니다.
+
+  return (
+    <div>
+      <span className="message one">리액트</span>
+      {!isShowLink ? '(' : ''}
+      <a
+        // hidden={isShowLink}
+        style={{ display: isShowLink ? 'inline' : 'none' }}
+        href="https://react.dev"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        https://react.dev
+      </a>
+      {!isShowLink ? ')' : ''}
+    </div>
+  );
+
+  // 조건부 렌더링 (rendering)
+  // return (
+  //   <div>
+  //     <span className="message one">리액트</span>
+  //     {isShowLink && (
+  //       <>
+  //         (
+  //         <a href="https://react.dev" target="_blank" rel="noreferrer noopener">
+  //           https://react.dev
+  //         </a>
+  //         )
+  //       </>
+  //     )}
+  //   </div>
+  // );
+}
+
+// eslint-disable-next-line no-unused-vars
+function Exercise1(/* nullish { isExist } */) {
   // 로그인 여부(상태 변수)
   let isSignin = true; // Math.random() >= 0.5;
 

@@ -1,5 +1,5 @@
 import './App.css';
-import Exercise from '../lecture/28-conditional-rendering';
+import Exercise from '../lecture/29-a11y-hidden-component';
 
 function App() {
   return (
