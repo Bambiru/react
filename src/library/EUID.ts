@@ -1,6 +1,6 @@
 // createElement 함수
 // DOM 노드 : HTMLElement 반환
-export function createElement(type, props = {}, ...children) {
+export function createElement(type:string, props = {}, ...children: any[]) {
     // type - DOM 요소 노드 생성
     const element = document.createElement(type);
 
@@ -27,10 +27,10 @@ export function createElement(type, props = {}, ...children) {
 
 // createRoot 함수
 // 반환 객체 : { render, unmount }
-export function createRoot(domNode /* container */) {
+export function createRoot(domNode:any /* container */) {
 
     // DOM에 렌더링 하는 함수
-    const render = (element) => {
+    const render = (element: any) => {
         domNode.append(element);
     };
 

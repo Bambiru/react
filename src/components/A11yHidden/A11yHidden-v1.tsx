@@ -1,5 +1,20 @@
 // import { createElement as h } from 'react';
 
+import * as React from "react";
+
+interface Style {
+    overflow: string;
+    position: string;
+    clip: string;
+    clipPath: string;
+    width: number;
+    height: number;
+    margin: string;
+    padding: number;
+    border: number;
+    whiteSpace: string;
+}
+
 function A11yHidden({ as: ComponentName = 'span', ...restProps }) {
   /* 리액트의 규칙때문에 컴포넌트를 대문자로 시작해야 한다.
   tag로 적었을 때 안되는 이유도 소문자일 경우 html 태그로 인식해서이다. */
@@ -12,6 +27,7 @@ function A11yHidden({ as: ComponentName = 'span', ...restProps }) {
 }
 
 export default A11yHidden;
+
 
 const styles = {
   overflow: 'hidden',

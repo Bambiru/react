@@ -1,3 +1,4 @@
+import * as React from 'react';
 import bannerImage from '../assets/banner.png';
 import { A11yHidden, SearchBar } from '../components';
 import classes from './29-a11y-hidden-component-v3.module.css';
@@ -15,7 +16,16 @@ const bannerInfo =
 
 // - [x] 상태가 없는(Stateless) 컴포넌트 ( 마크업, 스타일링 중심 )
 // - [ ] 상태를 가진(Stateful) 컴포넌트
-
+interface DemoImgProps {
+  imageSource: string;
+  style?: React.CSSProperties;
+  className?: string;
+  width?: number;
+  height?: number;
+  ratio?: number;
+  children?: React.ReactNode;
+  [x:string] : any;
+}
 function Exercise() {
   return (
     <>
@@ -34,8 +44,7 @@ function Exercise() {
           /* 사용자가 정의한 속성들, restProps이다. */
           data-testid="demo image"
           aria-label="좋은 세상 만들기"
-          role="group"
-        >
+          role="group" style={undefined}        >
           {/* [2] Skip to Content ( Links ) */}
           <A11yHidden as="a" href="/demo" focusable>
             링크 텍스트
@@ -59,7 +68,7 @@ function DemoImg(
     ratio = 1,
     children,
     ...restProps
-  }
+  }:DemoImgProps
 ) {
   const classNames = `${classes.demo} ${className}`.trim();
   const defaultStyles = {

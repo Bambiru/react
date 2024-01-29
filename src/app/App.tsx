@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Exercise from '../lecture/32-react-state-management';
 import './App.css';
 

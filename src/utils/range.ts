@@ -6,7 +6,7 @@
 // range(30) -> [0, 1, ...,30]
 // range(10,30) -> [10, 11, ...,30]
 // range(10,30,10) -> [10, 20, 30]
-export default function range(startOrEnd, end, step = 1) {
+export default function range(startOrEnd: number, end: number, step = 1) {
   const output = [];
 
   if (!end) {

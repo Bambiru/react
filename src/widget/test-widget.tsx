@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import './test-widget.css';
 
 import { createRoot } from 'https://esm.sh/react-dom';
+import * as React from 'react';
 function bodyStyling() {
   document.body.style.backgroundColor = `#f4f6f8`;
 }
