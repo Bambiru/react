@@ -1,9 +1,9 @@
-@import url('./exercies.css');
+@import url("./exercies.css");
 
 :root {
   --primary: #2731f4;
   --secondary: #f4f5f9;
-
+  
   /* Color styles */
   --white: #ffffff;
   --gray--100: #bcc3c7;
@@ -28,7 +28,7 @@
 
 body {
   margin: 0;
-  font: 1rem / 1.5 'SUIT Variable', 'Helvetica Neue', Arial, sans-serif;
+  font: 1rem / 1.5 "SUIT Variable", "Helvetica Neue", Arial, sans-serif;
   background: var(--secondary, #f4f5f9);
   color: var(--primary, #2731f4);
 }
@@ -42,7 +42,6 @@ body {
 
 .sr-only {
   overflow: hidden;
-  visibility: hidden;
   position: absolute;
   clip: rect(0, 0, 0, 0);
   clip-path: circle(0);
@@ -52,4 +51,19 @@ body {
   padding: 0;
   border: 0;
   white-space: nowrap;
+}
+
+body .group {
+  position: relative;
+  overflow: auto;
+  width: initial;
+  height: initial;
+  clip: auto;
+  clip-path: none;
+  white-space: wrap;
+  margin: 20px;
+  display: flex;
+  border: 10px solid currentColor;
+  padding: 20px;
+  background: red;
 }
