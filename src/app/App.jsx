@@ -1,4 +1,4 @@
-import Exercise from '../lecture/32-react-state-management';
+import Exercise from '../lecture/34-object-array-state-manage';
 import './App.css';
 
 function App() {
