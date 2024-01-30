@@ -1,4 +1,4 @@
-import Exercise from '../lecture/34-object-array-state-manage';
+import Exercise from '../lecture/35-props-vs-states';
 import './App.css';
 
 function App() {
