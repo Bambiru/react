@@ -2,9 +2,6 @@
 import { useState } from 'react';
 import classes from './33-avoid-bomb.module.css';
 
-// jQuery, Vanilla JavaScript
-// 명령형 프로그래밍
-
 let renderCount = 0;
 function Exercise() {
   console.log(classes);
