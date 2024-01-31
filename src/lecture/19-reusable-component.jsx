@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import FormControl from '../components/FormControl';
+import FormControl from '@/components/FormControl';
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import range from './../utils/range';
+import range from '@/utils/range';
 
 // 상태를 끌어 올려서 부모가 어떤 자식한테 textDecoration을 적용시킬 것인가를 하려는 것이다.
 // a를 클릭하면 a를 제외한 애들의 밑줄이 사라진다.

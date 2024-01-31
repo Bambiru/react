@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import catsData from '../data/cats.json';
-import { getStaticImage } from './../utils';
+import { getStaticImage } from '@/utils';
 
 function createCatsList() {
   return catsData.map((cat) => {

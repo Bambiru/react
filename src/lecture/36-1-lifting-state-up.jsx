@@ -1,6 +1,6 @@
 import classes from './36-1-lifting-state-up.module.css';
 import { useState } from 'react';
-import { A11yHidden } from '../components';
+import { A11yHidden } from '@/components';
 
 // [학습 주제]
 // 컴포넌트 사이에 상태를 공유해요!
@@ -27,14 +27,19 @@ function Accordion() {
       </A11yHidden>
       <AccordionPanel
         index={0}
-        isOpen={openedPanelIndex === 0}
+        // 상태 : 열려야 하나요 ?
+        // true : 열려라
+        // isOpen={true}
+        // false : 닫혀라
+        // isOpen={false}
+        isOpen={openedPanelIndex /* 0 */ === 0 /* true */}
         onToggle={handleOpenPannel}
       >
         <p>아코디언 컴포넌트는 ..... 1</p>
       </AccordionPanel>
       <AccordionPanel
         index={1}
-        isOpen={openedPanelIndex === 1}
+        isOpen={openedPanelIndex /* 0 */ === 1 /* false */}
         onToggle={handleOpenPannel}
       >
         <p>아코디언 컴포넌트는 ..... 2</p>
@@ -53,7 +58,10 @@ function AccordionPanel({
 }) {
   return (
     <div className={classes.AccordionPanel} {...restProps}>
-      <button type="button" onClick={() => onToggle(index)}>
+      <button
+        type="button"
+        onClick={() => onToggle(index) /* handleOpenPannel(index) */}
+      >
         {isOpen ? '닫음' : '열림'}
       </button>
       <div hidden={!isOpen}>{children}</div>

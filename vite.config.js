@@ -1,3 +1,4 @@
+import path from 'node:path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -7,5 +8,14 @@ export default defineConfig({
   server: {
     port: 3000, // default: 5173
     open: true, // default: false
+  },
+  resolve: {
+    alias: { '@': path.resolve(__dirname, './src') },
+  },
+  css: {
+    devSourcemap: true,
+    modules: {
+      generateScopedName: '[name]__[local]__[hash:base64:2]',
+    },
   },
 });

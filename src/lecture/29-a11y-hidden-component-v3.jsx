@@ -1,5 +1,5 @@
-import bannerImage from '../assets/banner.png';
-import { A11yHidden, SearchBar } from '../components';
+import bannerImage from '@/assets/banner.png';
+import { A11yHidden, SearchBar } from '@/components';
 import classes from './29-a11y-hidden-component-v3.module.css';
 
 console.log(classes);
