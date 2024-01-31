@@ -1,4 +1,4 @@
-import Exercise from '../lecture/35-props-vs-states';
+import Exercise from '../lecture/36-lifting-state-up';
 import './App.css';
 
 function App() {
