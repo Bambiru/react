@@ -67,6 +67,7 @@ function FormExample() {
         onReset={handleReset}
         style={{ display: 'flex', flexFlow: 'column', gap: 20 }}
       >
+        {/* input type='text' value */}
         <FormInput
           // hiddenLabel
           name="feelMessage"
@@ -76,6 +77,7 @@ function FormExample() {
           onChange={handleChange}
         />
 
+        {/* input type='email' value */}
         <FormInput
           name="email"
           label="이메일"
@@ -85,7 +87,7 @@ function FormExample() {
           onChange={handleChange}
         />
 
-        {/* radio input */}
+        {/* input type='radio' checked */}
         {/* checked를 이용해서 제어를 해줘야 합니다. */}
         <div data-label="라디오 버튼(인풋)">
           <label>

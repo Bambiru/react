@@ -1,5 +1,5 @@
+@import url('./tailwind.css');
 @import url("./exercies.css");
-
 :root {
   --primary: #2731f4;
   --secondary: #f4f5f9;
