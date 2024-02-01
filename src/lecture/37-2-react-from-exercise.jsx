@@ -24,11 +24,10 @@ const INITIAL_FORM_DATA = {
 function FormExample() {
   // 하나의 폼 상태 관리
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
-
+  console.log(formData.studySubject);
   // agree 상태 관리
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
 
     // 각괄호 표기 방법
     // object[key]

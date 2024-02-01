@@ -1,9 +1,11 @@
-import Exercise from '@/lecture/37-3-react-from-exercise.jsx';
-import { app as appClassName } from './App.module.css';
-console.log(appClassName);
+import { app as appClasName } from './App.module.css';
+import Exercise from '@/lecture/38-stack-layout-component.jsx';
+
+console.log(appClasName);
+
 function App() {
   return (
-    <div className={appClassName}>
+    <div className={appClasName}>
       <Exercise />
     </div>
   );
