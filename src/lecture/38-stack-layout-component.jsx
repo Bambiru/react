@@ -1,6 +1,7 @@
 import { Stack } from '@/components';
 import './38-stack-layout-component.css';
-import { useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
+
 function Exercise() {
   return (
     <>
@@ -8,6 +9,8 @@ function Exercise() {
     </>
   );
 }
+
+/* -------------------------------------------------------------------------- */
 
 function FormControlExample() {
   return (
@@ -20,73 +23,102 @@ function FormControlExample() {
     </Stack>
   );
 }
-// - 타입 : 밀라노 스폰티니 피자, 시찰리아 칼초네 피자, 시카고 피자
-// - 토핑 : 새우, 고구마, 감자, 올리브, 페페로니
+
 const PIZZA = {
   types:
-    '밀라노 스폰티니 피자, 시찰리아 칼초네 피자, 시카고 피자, 페페로니 피자, 포테이토 피자'.split(
-      ','
+    '밀라노 스폰티니 피자, 시찰리아 칼초네 피자, 시카고 피자, 페페로니 피자, 하와이안 피자'.split(
+      ', '
     ),
-  toppings:
-    '새우, 고구마, 감자, 올리브, 페페로니, 치즈, 파인애플, 가지, 포테이토'.split(
-      ','
-    ),
+  toppings: '새우, 고구마, 감자, 올리브, 페페로니'.split(', '),
 };
 
-const INITIAL_ORDER /* 초기값 */ = {
+const INITIAL_ORDER = {
   type: PIZZA.types[0],
-  toppings: [],
   isAllToppings: false,
+  toppings: [],
 };
 
-const LIMIT_TOPPING__COUNT = 3;
+// Design is All. All is Design.
+
+const LIMIT_TOPPING_COUNT = 3;
+
+// this.setState(newState, () => console.log(updatedState))
+// const [state, setState] = useState(initialState);
+
+// setState(nextState)
+// state -> nextState 바뀐 다음에 바로 콜백 함수를 실행시키려면?
+// useEffect()를 사용하면 setState를 대체할 수 있다.
 
 function Form() {
   // 주문 폼 상태(like a snapshot) 선언
   const [orderState, setOrderState] = useState(INITIAL_ORDER);
+
+  // 상태 업데이트 요청(트리거)
+  // 리액트 컴포넌트 (리-렌더)
+  // orderState 상태가 업데이트(리-렌더) 된 이후 콜백 함수 실행
+  useEffect(() => {
+    // orderState가 업데이트 된 마지막 스냅샷
+    // console.log(orderState);
+    if (orderState.toppings.length > 0) {
+      console.log('!');
+      // 토핑이 하나라도 추가된다면?
+      formRef.current.querySelectorAll('input + label').forEach((label) => {
+        label.style.color = 'hotpink';
+      });
+    }
+  }, [orderState]);
 
   const handleChangePizzaType = (e) => {
     const { value } = e.target;
 
     const nextOrderState = {
       ...orderState,
-      type: value /* 여기서 type은 피자의 type을 말한다. */,
+      type: value,
     };
+
     setOrderState(nextOrderState);
   };
 
-  const handleChangeAllToppings = (e) => {
-    const { checked } = e.target;
+  const handleChangeAllToppings = () => {
+    // 다음 상태 값
+    // const { checked } = e.target; // true
 
+    // 현재(업데이트 이전 시점) 상태 값
+    const isChecked = orderState.isAllToppings; // false -> true
+
+    console.log(`현재 상태 값: isChecked = ${isChecked}`);
+    // console.log(`다음 상태 값: checked = ${checked}`);
+
+    // 논리적 흐름의 순서상
+    // false -> true 변경
     const nextOrderState = {
       ...orderState,
-      isAllToppings: checked,
-      toppings: checked ? PIZZA.toppings : [],
+      isAllToppings: !isChecked /* 현재 체크되지 않았다면 체크해라 */,
+      toppings: !isChecked /* 현재 체크되지 않았다면 토핑을 모두 채워라 */
+        ? PIZZA.toppings
+        : [],
     };
+
     setOrderState(nextOrderState);
   };
 
   const handleChangePizzaToppings = (e) => {
-    // if (orderState.toppings.length > 2) {
-    //   return alert('피자 토핑은 3개까지만 됩니다.😣');
-    // }
     const { value: topping /* checked: isChecked */ } = e.target;
 
-    // 리액트 입장에서 현재 토핑 집합의 총 개수
+    // 리액트 입장에서 현재 토핑 집합의 총 갯수
     const toppingsCount = orderState.toppings.length;
+    // console.log(toppingsCount);
 
-    // 리액트의 상태 업데이트 논리적 흐름
+    // 리액트의 상태 업데이트 논리적인 흐름
     const isToppingChecked = orderState.toppings.includes(topping);
 
     // 리액트의 현재 상태 vs. DOM의 현재 상태(리액트의 다음 상태)
-    console.log({ isToppingChecked /* isChecked */ });
-    // console.log('이전 토핑 목록', orderState.toppings);
+    // console.log({ isToppingChecked, isChecked });
 
-    // 만약 토핑 갯수를 3개로 제한하는 경우, 조건 처리
-    // - 리액트 입장 ( 현재 토핑 집합에 포함된 토핑의 총 갯수가 3개 라면?)
-    if (toppingsCount === LIMIT_TOPPING__COUNT && !isToppingChecked) {
-      // 사용자에게 경고 메시지를 표시하고 상태 업데이트를 중단합니다.
-      return alert('현재(업데이트 전) 토핑 갯수가 3개 입니다.');
+    // 만약 토핑 선택 갯수를 3개로 제한하는 경우, 조건 처리
+    if (toppingsCount === LIMIT_TOPPING_COUNT && !isToppingChecked) {
+      // 사용자에게 경고 메시지를 표시하고 상태 업데이트 중단(return : 함수 종료)
+      return alert('현재(업데이트 전) 토핑 갯수가 3개입니다.');
     }
 
     let nextToppings = [];
@@ -99,16 +131,14 @@ function Form() {
       // 토핑 삭제
       nextToppings = orderState.toppings.filter((t) => t !== topping);
     }
-    const hasFullFilledToppings =
-      nextToppings.length /* 클릭된 토핑의 갯수 */ ===
-      PIZZA.toppings.length; /* 총 토핑갯수 */
+
+    const hasFullFilledToppings = nextToppings.length === PIZZA.toppings.length;
 
     const nextOrderState = {
       ...orderState,
       toppings: nextToppings,
       isAllToppings: hasFullFilledToppings,
     };
-    // console.log('다음 토핑 목록', nextToppings, hasFullFilledToppings);
 
     setOrderState(nextOrderState);
   };
@@ -117,13 +147,15 @@ function Form() {
     e.preventDefault();
     console.log(orderState);
   };
+
   const handleCancel = () => {
-    // 주문 초기화
     setOrderState(INITIAL_ORDER);
   };
 
+  const formRef = useRef(null);
+
   return (
-    <form onSubmit={handleOrder} onReset={handleCancel}>
+    <form ref={formRef} onSubmit={handleOrder} onReset={handleCancel}>
       <h3>피자 타입을 선택하세요.</h3>
       {PIZZA.types.map((pizzaType) => (
         <FormChecker
@@ -137,9 +169,10 @@ function Form() {
         </FormChecker>
       ))}
 
-      <h3>피자 토핑을 추가하세요.</h3>
+      <h3>피자 토핑을 추가합니다.</h3>
       <FormChecker
         checkbox
+        // 리액트 제어 컴포넌트
         checked={orderState.isAllToppings}
         onChange={handleChangeAllToppings}
       >
@@ -147,8 +180,8 @@ function Form() {
       </FormChecker>
       {PIZZA.toppings.map((topping) => (
         <FormChecker
-          key={topping}
           checkbox
+          key={topping}
           name="topping"
           value={topping}
           checked={orderState.toppings.includes(topping)}
@@ -158,7 +191,7 @@ function Form() {
         </FormChecker>
       ))}
 
-      <Stack as="article" aria-label="주문 컨트롤" gap={4} my={16}>
+      <Stack gap={4} my={16}>
         <button type="submit">주문</button>
         <button type="reset">취소</button>
       </Stack>
@@ -172,9 +205,8 @@ function FormChecker({
   children,
   ...restProps
 }) {
-  const type = checkbox ? 'checkbox' : 'radio';
-
   const id = useId();
+  const type = checkbox ? 'checkbox' : 'radio';
 
   return (
     <Component>
@@ -183,4 +215,5 @@ function FormChecker({
     </Component>
   );
 }
+
 export default Exercise;
