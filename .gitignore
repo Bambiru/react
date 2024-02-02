@@ -6,3 +6,5 @@ node_modules
 REQUIREMENTS.md
 template.md
 dist
+.env
+pocketbase
