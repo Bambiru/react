@@ -83,6 +83,7 @@ function Form() {
     // console.log('이전 토핑 목록', orderState.toppings);
 
     // 만약 토핑 갯수를 3개로 제한하는 경우, 조건 처리
+    // - 리액트 입장 ( 현재 토핑 집합에 포함된 토핑의 총 갯수가 3개 라면?)
     if (toppingsCount === LIMIT_TOPPING__COUNT && !isToppingChecked) {
       // 사용자에게 경고 메시지를 표시하고 상태 업데이트를 중단합니다.
       return alert('현재(업데이트 전) 토핑 갯수가 3개 입니다.');
