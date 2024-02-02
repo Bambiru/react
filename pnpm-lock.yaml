@@ -14,28 +14,28 @@ dependencies:
 
 devDependencies:
   '@storybook/addon-essentials':
-    specifier: ^7.6.10
+    specifier: 7.6.10
     version: 7.6.10(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
   '@storybook/addon-interactions':
-    specifier: ^7.6.10
+    specifier: 7.6.10
     version: 7.6.10
   '@storybook/addon-links':
-    specifier: ^7.6.10
+    specifier: 7.6.10
     version: 7.6.10(react@18.2.0)
   '@storybook/addon-onboarding':
-    specifier: 1.0.11
+    specifier: ^1.0.11
     version: 1.0.11(react-dom@18.2.0)(react@18.2.0)
   '@storybook/blocks':
-    specifier: ^7.6.10
+    specifier: 7.6.10
     version: 7.6.10(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
   '@storybook/react':
-    specifier: ^7.6.10
+    specifier: 7.6.10
     version: 7.6.10(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
   '@storybook/react-vite':
-    specifier: ^7.6.10
+    specifier: 7.6.10
     version: 7.6.10(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)(vite@5.0.11)
   '@storybook/test':
-    specifier: ^7.6.10
+    specifier: 7.6.10
     version: 7.6.10
   '@types/react':
     specifier: 18.2.48
@@ -47,7 +47,7 @@ devDependencies:
     specifier: 4.2.1
     version: 4.2.1(vite@5.0.11)
   autoprefixer:
-    specifier: ^10.4.17
+    specifier: 10.4.17
     version: 10.4.17(postcss@8.4.33)
   eslint:
     specifier: 8.56.0
@@ -56,16 +56,19 @@ devDependencies:
     specifier: 7.33.2
     version: 7.33.2(eslint@8.56.0)
   eslint-plugin-storybook:
-    specifier: ^0.6.15
+    specifier: 0.6.15
     version: 0.6.15(eslint@8.56.0)(typescript@5.3.3)
   postcss:
-    specifier: ^8.4.33
+    specifier: 8.4.33
     version: 8.4.33
+  postcss-import:
+    specifier: 16.0.0
+    version: 16.0.0(postcss@8.4.33)
   storybook:
-    specifier: ^7.6.10
+    specifier: 7.6.10
     version: 7.6.10
   tailwindcss:
-    specifier: ^3.4.1
+    specifier: 3.4.1
     version: 3.4.1
   typescript:
     specifier: 5.3.3
@@ -7330,6 +7333,18 @@ packages:
   /postcss-import@15.1.0(postcss@8.4.33):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
+    peerDependencies:
+      postcss: ^8.0.0
+    dependencies:
+      postcss: 8.4.33
+      postcss-value-parser: 4.2.0
+      read-cache: 1.0.0
+      resolve: 1.22.8
+    dev: true
+
+  /postcss-import@16.0.0(postcss@8.4.33):
+    resolution: {integrity: sha512-e77lhVvrD1I2y7dYmBv0k9ULTdArgEYZt97T4w6sFIU5uxIHvDFQlKgUUyY7v7Barj0Yf/zm5A4OquZN7jKm5Q==}
+    engines: {node: '>=18.0.0'}
     peerDependencies:
       postcss: ^8.0.0
     dependencies:
