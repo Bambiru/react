@@ -1,52 +1,63 @@
 import { Stack } from '@/components';
-import { useId } from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useState, useEffect, useId } from 'react';
 
 const API_ENDPOINT = `${
   import.meta.env.VITE_PB_API
 }/api/collections/products/records?page=2&perPage=2`;
 
+// 그렇다면 리액트에서 사이드 이펙트 코드는 어디에 작성해야 하는가?
+// - [x] 이벤트 핸들러
+//       - 왜? 이벤트 핸들러 함수 내부에서는 사이드 이펙트 코드 처리가 가능할까?
+//       - 리액트의 렌더링과 무관하게 실행 시점이 실제 DOM에서 사용자에 의해 실행되기 때문
+// - [x] 이펙트를 처리하기 위한 리액트의 빌트인 훅 : React.useEffect
+//       - 특정 시점(라이프 사이클(생명 주기) : 컴포넌트 작동 흐름)에 실행되는 콜백 함수
+
+// let mounted = false;
+
 function Exercise() {
   // 로컬 스토리지 데이터 읽기 -> 컴포넌트 상태로 관리
-  // 로컬 스토리지에서 데이터를 읽거나 쓰는건 비동기
-  // 잘못된사례
+  // 로컬 스토리지에서 데이터를 읽거나 쓰는 건 비동기!
+  // ❌
   // const username = localStorage.getItem('username');
-  // const [uname] = userState(username);
+  // const [uname] = useState(username);
 
-  // 맞음
-  const [username] = useState(() => {
-    const username = localStorage.getItem('username');
-    return username;
-  });
-  console.log(username);
+  // ✅
+  // const [username] = useState(() => {
+  //   const username = localStorage.getItem('username');
+  //   return username;
+  // });
 
-  //관심사의 분리
+  // console.log(username);
+
+  // 관심사의 분리
   // 상태
   const [products, setProducts] = useState(null);
-  // 사이드 이펙트
-  // useEffect(setup/* effect(callback)function */,/* dependencies?(array) */)
 
-  // 규칙1. 훅 함수는 함수 컴포넌트 또는 use로 시작하는 함수(사용자 정의 훅 함수)에서만 사용 가능
-  // 규칙2. 훅 함수는 컴포넌트 내부에 사용된 문, 중첩된 함수 내부에서 사용할 수 없다.
-  // 그렇기 때문에 if문 안에서는 사용할 수 없다.
+  // 사이드 이펙트 관리
+  // useEffect(setup/* effect (callback) function */, /* dependencies? (array) */);
+
+  // 규칙 1. 훅 함수는 함수 컴포넌트 또는 use로 시작하는 함수(사용자 정의 훅 함수)에서만 사용 가능
+  // 규칙 2. 훅 함수는 컴포넌트 내부에 사용된 문, 중첩된 함수 내부에서 사용할 없음
+  // if (!mounted) {
   useEffect(
     () => {
-      // mount ? 컴포넌트 -> 렌더되어서 DOM에 커밋되는 시점에서 콜백 함수가 실행됩니다.
-      console.log('mount');
+      // 컴포넌트 렌더 → DOM 커밋 (이 시점에 콜백 함수 실행)
+      // console.log('mounted');
 
-      // 공간을 마련해줄테니 하고싶은거 다 해
-      // DOM 접근 / 조작
-      // 문서의 제목을 맘대로 변경
-      document.title = '빠밤비😘';
+      // DOM 접근/조작
+      // 문서의 제목을 제 맘대로 변경!!!
+      document.title = '우리 모두 갸루피스~~ 😀';
 
       // 비동기 처리
       setTimeout(() => {
-        document.title = '홀리몰리🌮';
+        document.title = '너와 난 몰리~~ 😳';
       }, 2000);
+
+      // mounted = true;
     },
-    [] /* 최초 1회 렌더링 될때만 셋업 함수 실행 */
+    [] /* 최초 1회 렌더링 될 때만 셋업 함수 실행 */
   );
+  // }
 
   const productsCount = products?.length;
 
@@ -85,7 +96,7 @@ function Exercise() {
   return (
     <Stack vertical className="mx-6">
       <h2 className="mt-4 text-2xl">부수 효과(Side Effects)</h2>
-      <Button
+      {/* <Button
         className="button"
         count={productsCount}
         onClick={handleEffectDomAccess}
@@ -94,7 +105,7 @@ function Exercise() {
       </Button>
       <Button className="button" count={productsCount}>
         부수 효과
-      </Button>
+      </Button> */}
       <ul>
         <li>
           리액트의 컴포넌트는 [ <strong>순수</strong> ] 해야 한다.
@@ -113,7 +124,7 @@ function Exercise() {
       {products && (
         <Stack as="ul" vertical gap={12}>
           {products.map((product) => (
-            <li key={product.id}>{product.name}</li>
+            <li key={product.id}>{product.title}</li>
           ))}
         </Stack>
       )}
@@ -130,36 +141,103 @@ function Exercise() {
             {isShow ? '메시지 감춤' : '메시지 표시'}
           </label>
         </Stack>
-        {isShow && <Message message="클린업(정리:cleanup)이 중요하다!" />}
-        <Message />
+        {isShow && <Message message="클린업(정리: cleanup)이 중요하다!" />}
       </Stack>
     </Stack>
   );
 }
 
 function Message({ message }) {
-  useEffect(() => {
-    const handleMove = (e) => {
-      console.log({ x: e.clientX, y: e.clientY });
-    };
+  // 이펙트 사용 결정
+  // componentDidMount
+  // componentDidUpdate? (조건 처리)
+  // componentWillUnmount?
+  useEffect(
+    // [1] 설정 함수
+    // - DOM 커밋 이후 실행되는 콜백 함수
+    () => {
+      const handleMove = (e) => {
+        console.log({ x: e.clientX, y: e.clientY });
+      };
 
-    // 이벤트 청취(구독)
-    globalThis.addEventListener('mousemove', handleMove);
+      // 이벤트 청취(구독)
+      globalThis.addEventListener('mousemove', handleMove);
 
-    // 이벤트 청취 해제 (구독취소)
-    return function cleanup() {
-      globalThis.removeEventListener('mousemove', handleMove);
-    };
-  }, []);
+      // 이벤트 청취 해제(구독 취소)
+      // [3] 클린업 함수
+      // - 필요한 경우, 정리 수행
+      return () => {
+        globalThis.removeEventListener('mousemove', handleMove);
+      };
+    },
+    // [2] 종속성 배열
+    // - 종속성 배열을 설정하지 않을 경우, 매 렌더링 마다 실행
+    // - 종속성 배열에는 무엇을 채우나? 추가된 값이 변경될 때마다, 설정 함수 실행
+    []
+  );
+
   return <p>{message}</p>;
 }
 
-function Button({ renderCount = 0, children, ...restProps }) {
+function Button({ count = 0, children, ...restProps }) {
+  // 그 어떤 것에도 의존하지 않는 이펙트 설정 함수
+  // componentDidMount
+  // componentDidUpdate
+  useEffect(
+    () => {
+      console.log('매번 실행');
+    } /* , [] */
+  );
+
+  // DOM 커밋 이후 1회 실행하는 이펙트 설정 함수
+  // componentDidMount
+  useEffect(() => {
+    console.log('DOM 커밋 이후, 최초 1회 실행');
+  }, []);
+
+  // props에 의존하는 이펙트 설정 함수
+  // - count 속성이 변경되면 그 때마다 이펙트 함수가 실행
+  // componentDidMount
+  // componentDidUpdate (조건 처리)
+  useEffect(
+    () => {
+      console.log(`count = ${count}`);
+    },
+    [count] /* props */
+  );
+
+  const [emoji, setEmoji] = useState(getRandomEmoji);
+
+  // states에 의존하는 이펙트 설정 함수
+  // componentDidMount
+  // componentDidUpdate (조건 처리)
+  useEffect(
+    () => {
+      console.log(`emoji = ${emoji}`);
+    },
+    [emoji /* states */, count /* props */] /* states */
+  );
+
+  console.log('-------------------------------------');
+
   return (
-    <button type="button" {...restProps}>
-      {children} ({renderCount})
+    <button
+      type="button"
+      onMouseEnter={() => {
+        setEmoji(getRandomEmoji());
+      }}
+      {...restProps}
+    >
+      {emoji} {children} ({count})
     </button>
   );
 }
+
+const getRandomEmoji = () => {
+  const { emojies } = getRandomEmoji;
+  return emojies[Math.floor(Math.random() * emojies.length - 1) + 1];
+};
+
+getRandomEmoji.emojies = ['😊', '✅', '🎩', '✨', '👊🏻', '🎻', '❤️'];
 
 export default Exercise;
