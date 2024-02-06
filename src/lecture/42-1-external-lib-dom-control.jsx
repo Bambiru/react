@@ -1,6 +1,7 @@
 /* 외부 라이브러리 활용의 돔을 가지고 제어 */
 import { useTilt } from '@/hooks';
-// import { range } from '@/utils';
+import { range } from '@/utils';
+import { Tilt } from 'react-tilt';
 
 // const BOX_COUNT = 9;
 const BOX_OPTIONS = {
@@ -18,13 +19,31 @@ const IMG_URL = [
 
 function Exercise() {
   return (
-    <div className="flex gap-2">
-      {IMG_URL.map((n) => (
-        <TiltBox key={n} options={BOX_OPTIONS}>
-          <img src={n} alt="" />
-        </TiltBox>
-      ))}
-    </div>
+    <>
+      <div className="flex gap-2 mb-10">
+        {range(40, 90, 7).map((n) => (
+          <Tilt
+            style={{ height: 250, width: 250 }}
+            key={n}
+            className="bg-black"
+            options={BOX_OPTIONS}
+            onMouseEnter={(e) => {
+              console.log(e);
+            }}
+          >
+            <span>🦁 Like-Lion</span>
+          </Tilt>
+        ))}
+      </div>
+
+      <div className="flex gap-2">
+        {IMG_URL.map((n) => (
+          <TiltBox key={n} options={BOX_OPTIONS}>
+            <img src={n} alt="" />
+          </TiltBox>
+        ))}
+      </div>
+    </>
   );
 }
 
