@@ -1,23 +1,29 @@
 /* 외부 라이브러리 활용의 돔을 가지고 제어 */
 import { useTilt } from '@/hooks';
+// import { range } from '@/utils';
 
-const BOX_COUNT = 9;
+// const BOX_COUNT = 9;
 const BOX_OPTIONS = {
   reverse: true,
   glare: true,
-  'max-glare': 0.7,
+  'max-glare': 1,
 };
+
+const IMG_URL = [
+  'https://m.tcgbox.co.kr/web/product/big/DP/DP%20005.jpg',
+  'https://i.namu.wiki/i/y_e6vOSfWJPgzvz3yvgu3Q2V4diaxJ9cuC-U4pnTeUJZBs6o8H8eMkyRg67ISQ6-9PccmF5cmNkpJ9OgPjNtgQ.webp',
+  'https://i.namu.wiki/i/4j61PYzKsb0u4KBYDodKXaXLLz7NPsvEbMxeAW30daHIwt3G9huYF_jaJcPUimXXJispzlDKTAyH_-JN9pIavw.webp',
+  'https://m.tcgbox.co.kr/web/product/medium/s4/S4_034.jpg',
+];
 
 function Exercise() {
   return (
     <div className="flex gap-2">
-      {Array(BOX_COUNT)
-        .fill(null)
-        .map((_, i) => (
-          <TiltBox key={i} options={BOX_OPTIONS}>
-            {i + 1}
-          </TiltBox>
-        ))}
+      {IMG_URL.map((n) => (
+        <TiltBox key={n} options={BOX_OPTIONS}>
+          <img src={n} alt="" />
+        </TiltBox>
+      ))}
     </div>
   );
 }
