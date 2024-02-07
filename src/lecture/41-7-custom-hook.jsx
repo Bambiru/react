@@ -1,16 +1,12 @@
 import { Stack } from '@/components';
 import { useInOnScreen } from '@/hooks';
-import { useEffect } from 'react';
-import { useLayoutEffect, useRef, useState } from 'react';
+
+const colorBoxes = ['black', 'indigo', 'orange', 'emerald'];
 
 function Exercise() {
-  const [isOnScreen, elementRef] = useInOnScreen();
-
-  const colorBoxes = ['black', 'indigo', 'orange', 'emerald'];
-
   return (
     <section className="w-full my-5">
-      {/* <header className="fixed bottom-0 left-0 w-full p-5 bg-white/70 backdrop-blur-sm">
+      {/* <header className="fixed bottom-0 left-0 w-full p-5 text-indigo-900 bg-white/70 backdrop-blur-sm">
         <p>
           INTERSECTION →{' '}
           <b className="font-extrabold">{isOnScreen ? 'IN' : 'OUT'}</b>
@@ -35,11 +31,12 @@ function Exercise() {
 }
 
 function Box({ color, children }) {
-  const [isOnScreen, elementRef] = useInOnScreen();
+  const [inOnScreen, elementRef] = useInOnScreen();
 
-  console.log(`${color} 박스 상태 : ${isOnScreen ? 'IN' : 'OUT'}`);
+  console.log(`${color} 박스 상태: ${inOnScreen ? 'in' : 'out'}`.toUpperCase());
 
   let bgColor = '';
+
   switch (color) {
     case 'orange':
       bgColor = 'bg-orange-800';
@@ -53,6 +50,7 @@ function Box({ color, children }) {
     default:
       bgColor = 'bg-black';
   }
+
   return (
     <article
       ref={elementRef}

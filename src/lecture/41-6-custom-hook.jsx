@@ -1,47 +1,43 @@
-// import { useState } from 'react';
-
 import { useStorage } from '@/hooks';
 
-const KEY = 'say-today';
+const KEY = 'userId';
+const initialValue = 'bambi';
 
-// const initailizeState = () => {
-//   const storageData = localStorage.getItem(KEY);
-//   console.log(storageData);
+function Exercise() {
+  const [userId /* state */, setUserId /* update */] = useStorage(
+    /* 매개변수 */
+    KEY,
+    initialValue
+  );
 
-//   if (!storageData) {
-//     return '오늘 기억하고 싶은 말';
-//   } else {
-//     console.log(storageData);
-//     return JSON.parse(storageData);
-//   }
-// };
-export default function Exercise() {
-  // 1. 컴포넌트 로직 => 훅 함수로 분리 (usePersist)
-  // const [message, setMessage] = useState(initailizeState);
-
-  // const handleUpdate = (e) => {
-  //   const nextMessage = e.target.value;
-  //   setMessage(nextMessage);
-  //   /* 디바운싱 작업을 해주는 게 좋다. */
-  //   localStorage.setItem(KEY, JSON.stringify(nextMessage));
-  // };
-
-  const [message, setMessage] = useStorage(KEY, '밤비는 귀엽다');
-  const handleUpdate = (e) => {
-    setMessage(e.target.value);
+  const handleChangeUserId = (e) => {
+    setUserId(e.target.value); /* nextValue */
   };
 
   return (
     <div className="m-5">
       <input
         type="text"
-        aria-label="오늘 기억하고 싶은 말"
-        placeholder="오늘 기억하고 싶은 말"
-        value={message}
-        onChange={handleUpdate}
+        aria-label="아이디를 입력해주세요"
+        placeholder="아이디를 입력해주세요"
+        defaultValue={userId}
+        onChange={debounce(handleChangeUserId)}
       />
-
-      <p className="my-2">{message}</p>
+      {userId === '' ? (
+        <p className="text-red-500">아이디가 입력되지 않았습니다.</p>
+      ) : (
+        <p>{userId}</p>
+      )}
     </div>
   );
 }
+
+function debounce(callback, timeout = 400) {
+  let cleanup;
+
+  return (...args) => {
+    clearTimeout(cleanup);
+    cleanup = setTimeout(callback.bind(null, ...args), timeout);
+  };
+}
+export default Exercise;

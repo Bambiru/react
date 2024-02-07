@@ -8,6 +8,7 @@ const BOX_OPTIONS = {
   reverse: true,
   glare: true,
   'max-glare': 1,
+  scale: 0.94,
 };
 
 const IMG_URL = [
@@ -47,7 +48,12 @@ function Exercise() {
   );
 }
 
-function TiltBox({ children, onTilt = null, options = {}, ...restProps }) {
+export function TiltBox({
+  children,
+  onTilt = null,
+  options = {},
+  ...restProps
+}) {
   const boxRef = useTilt({
     onTilt,
     options,
