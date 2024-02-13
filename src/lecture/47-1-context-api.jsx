@@ -1,5 +1,3 @@
-import React from 'react';
-
 // [학습 순서]
 // 1. 상태 끌어올리기 전략
 // 2. 프롭스 드릴링 이슈
@@ -12,11 +10,14 @@ import React from 'react';
 // 3-5. 컨텍스트 값을 공급하는 커스텀 훅
 // 3-6. 효율적인 리-렌더링 관리 (프로파일링 & 메모)
 
+import ChatPage from './context-api/ChatPage';
+
 function Exercise() {
   return (
     <div>
       <h2>컨텍스트 API</h2>
       <p>리액트 컴포넌트 간 상태를 공유하는 효율적인 방법</p>
+      <ChatPage />
     </div>
   );
 }
