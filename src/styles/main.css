@@ -1,9 +1,10 @@
 @import url('./tailwind.css');
 @import url("./exercies.css");
+
 :root {
   --primary: #2731f4;
   --secondary: #f4f5f9;
-  
+
   /* Color styles */
   --white: #ffffff;
   --gray--100: #bcc3c7;
@@ -66,4 +67,28 @@ body .group {
   border: 10px solid currentColor;
   padding: 20px;
   background: red;
+}
+
+input {
+  position: relative;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  position: absolute;
+  width: 12.5%;
+  height: 100%;
+  top: 0;
+  right: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

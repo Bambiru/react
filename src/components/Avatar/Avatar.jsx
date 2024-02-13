@@ -1,21 +1,25 @@
-import './Avatar.css';
+import classes from './Avatar.module.css';
+import { string, bool } from 'prop-types';
 
-function Avatar(/* props */ { photo, name = '', isOnline = false }) {
+function Avatar({ photo, name = '', isOnline = false }) {
   const status = isOnline ? '온라인' : '오프라인';
+
   return (
-    <>
-      <figure className="Avatar">
-        <img src={photo} alt={name} />
-        <figcaption
-          className={isOnline ? 'online' : ''}
-          aria-label={status}
-          title={status}
-        ></figcaption>
-      </figure>
-    </>
+    <figure className={classes.Avatar}>
+      <img src={photo} alt={name} />
+      <figcaption
+        className={isOnline ? classes.online : ''}
+        aria-label={status}
+        title={status}
+      />
+    </figure>
   );
 }
-export default Avatar;
 
-// HTML -> JSX -> DATA
-// Markup -> Component Design (Design)
+Avatar.propTypes = {
+  photo: string.isRequired,
+  name: string,
+  isOnline: bool,
+};
+
+export default Avatar;
